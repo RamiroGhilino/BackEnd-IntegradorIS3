@@ -35,8 +35,8 @@ app.use(express.json());
 let count = 0;
 
 
-app.get('/', (req,res) => {
-    (async () => {
+app.get('/', async (req,res) => {
+        console.log("Este cambio se hizo con github actions");
         let count = await redisClient.get('count');
         if (count === null) {
             await redisClient.set('count', 0);
@@ -45,11 +45,9 @@ app.get('/', (req,res) => {
         }
         console.log(count);
         res.send({'value': count})
-    })()
 })
 
-app.get('/add', (req, res) => {
-    (async () => {
+app.get('/add', async (req, res) => {
         let count = await redisClient.get('count');
         if (count === null) {
             await redisClient.set('count', 1);
@@ -60,11 +58,9 @@ app.get('/add', (req, res) => {
         count++;
         await redisClient.set('count', count);
         res.send({'value': count})
-    })()
 })
 
-app.get('/sub', (req, res) => {
-    (async () => {
+app.get('/sub', async (req, res) => {
         let count = await redisClient.get('count');
         if (count === null) {
             await redisClient.set('count', -1);
@@ -75,11 +71,9 @@ app.get('/sub', (req, res) => {
         count--;
         await redisClient.set('count', count);
         res.send({'value': count})
-    })()
 })
 
-app.get('/restart', (req, res) => {
-    (async () => {
+app.get('/restart', async(req, res) => {
         let count = await redisClient.get('count');
         if (count === null) {
             await redisClient.set('count', 0);
@@ -90,7 +84,6 @@ app.get('/restart', (req, res) => {
         count = 0;
         await redisClient.set('count', count);
         res.send({'value': count})
-    })()
 })
 
 app.listen(port, () => {
