@@ -1,14 +1,20 @@
+const dotenv = require('dotenv');
 const express = require('express');
 const app = express();
 const port = 5050;
+
+dotenv.config();
 
 // Redis setup
 const redis = require('redis');
 
 //6379 es el puerto al que va a buscar la base de datos, usualmente esa es por defecto pero la aclaro por si acaso
-const redisClient = redis.createClient(6379);
+console.log(process.env.REDIS_URL);
+const redisClient = redis.createClient({
+  url: process.env.REDIS_URL,
+});
 
-// intentar conexión
+// intentar conexiÃ³n
 (async () => {
     await redisClient.connect();
 })();
@@ -90,4 +96,3 @@ app.get('/restart', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
-
