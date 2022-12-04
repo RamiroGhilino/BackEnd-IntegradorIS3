@@ -4,7 +4,7 @@
 
 Para levantar el BackEnd utilizar el comando `node index.js` 
 
-**Nota**: Este pryoecto utiliza el puerto 5050.
+**Nota**: Este proyecto utiliza el puerto 5050 cuando se corre en local.
 
 ## Respecto de Redis
 
