@@ -34,7 +34,7 @@ app.use(express.json());
 let count = 0;
 
 app.get("/", async (req, res) => {
-  res.send("Este cambio se hizo con github actions");
+  //console.log("Este cambio se hizo con github actions");
   let count = await redisClient.get("count");
   if (count === null) {
     await redisClient.set("count", 0);
