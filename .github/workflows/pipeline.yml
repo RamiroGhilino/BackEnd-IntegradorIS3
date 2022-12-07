@@ -19,10 +19,11 @@ jobs:
           node-version: 19.x
 
       - name: Install packages
-        run: npm ci
+        run: npm ci --include=dev
 
       - name: Run tests
-        run: npm ci --include=dev
+        run: npm run test
+
 
       - name: Install Railway
         run: npm i -g @railway/cli
