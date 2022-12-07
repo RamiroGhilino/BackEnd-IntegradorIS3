@@ -3,6 +3,10 @@ const express = require("express");
 const app = express();
 const port = 5050;
 
+const add = require("./funciones/add");
+const sub = require("./funciones/sub");
+const restart = require("./funciones/restart");
+
 dotenv.config();
 
 // Redis setup
@@ -53,7 +57,7 @@ app.get("/add", async (req, res) => {
     return;
   }
   console.log(count);
-  count++;
+  count = add(parseInt(count));
   await redisClient.set("count", count);
   res.send({ value: count });
 });
@@ -66,7 +70,7 @@ app.get("/sub", async (req, res) => {
     return;
   }
   console.log(count);
-  count--;
+  count = sub(parseInt(count));
   await redisClient.set("count", count);
   res.send({ value: count });
 });
@@ -79,11 +83,17 @@ app.get("/restart", async (req, res) => {
     return;
   }
   console.log(count);
-  count = 0;
+  count = restart();
   await redisClient.set("count", count);
   res.send({ value: count });
 });
 
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+
+
+module.exports = { 
+  add, sub, restart
+}
