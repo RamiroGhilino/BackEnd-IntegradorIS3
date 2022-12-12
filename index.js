@@ -18,7 +18,7 @@ const redisClient = redis.createClient({
   url: process.env.REDIS_URL,
 });
 
-// intentar conexiÃ³n
+// intentar conexion
 (async () => {
   await redisClient.connect();
 })();
