@@ -35,6 +35,13 @@ redisClient.on("error", (err) => {
 
 app.use(express.json());
 
+//cors enable
+var cors = require('cors');
+var corsOptions = {
+  origin: "https://frontend-production-0c0f.up.railway.app"
+};
+app.use(cors(corsOptions));
+
 let count = 0;
 
 app.get("/", async (req, res) => {
