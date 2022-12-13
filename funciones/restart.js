@@ -1,5 +1,6 @@
-function restart () {
-    return 0;
+function restart (contador) {
+    contador = 0;
+    return contador;
 }
 
 module.exports = restart;

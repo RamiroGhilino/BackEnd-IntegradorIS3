@@ -15,5 +15,5 @@ test('resta 1 al número actual', () => {
 
 test('vuelve a 0 el contador', () => {
     let count = 10;
-    expect(restart()).toBe(0);
+    expect(restart(count)).toBe(0);
 })
