@@ -85,6 +85,6 @@ jobs:
         working-directory: ./Integracion-IS3
         run: npm ci
 
-      - name: Run Integration Test
+      - name: Run Integration Test and Report
         working-directory: ./Integracion-IS3
-        run: npx codeceptjs run --steps
+        run: TESTOMATIO=${{secrets.TESTTOMAT_API_KEY}} npx codeceptjs run
